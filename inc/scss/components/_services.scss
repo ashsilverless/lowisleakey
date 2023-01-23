@@ -1,0 +1,62 @@
+$offset: 10rem;
+
+.services {
+    margin: 0;
+
+    &__header {
+        width: 40rem;
+        margin-bottom: 5rem;
+
+        .heading__primary {
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__item {
+        border: 1px solid $color-grey-mid;
+        padding: $offset;
+        margin-top: 0;
+        margin-left: -$offset;
+        margin-right: -$offset;
+        margin-bottom: $offset*.5;
+
+
+
+    }
+
+    &__card {
+        position: relative;
+        display: grid;
+        grid-template-columns: 3fr 4fr;
+        align-content: center;
+        margin-bottom: 2rem;
+        background: white;
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: -5rem;
+            top: 0;
+            width: 5rem;
+            height: 100%;
+            background-color: white;
+        }
+
+        .copy {
+            grid-column: 1/2;
+            align-self: center;
+            padding: 5rem 10rem 5rem 0;
+
+            .heading {
+                width: 75%;
+            }
+        }
+
+        .card_image {
+            grid-column: 2/3;
+            background-size: cover;
+            background-position: center center;
+        }
+    }
+
+}

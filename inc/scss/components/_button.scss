@@ -1,0 +1,61 @@
+$chevronOffset: 2rem;
+
+.button {
+  position: relative;
+  display: block;
+  background: $color-primary;
+  color: white;
+  padding: 1rem calc($chevronOffset * 3) 1rem $chevronOffset;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: $default-header-style;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 1.7px;
+  transition: .3s all ease;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: $chevronOffset;
+    background: url('inc/img/chevron.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 1rem;
+    height: 100%;
+  }
+
+  &:hover {
+    background: darken($color-primary, 20%);
+  }
+
+  &__inline {
+    display: inline-block;
+    padding: 1rem calc($chevronOffset * 5) 1rem $chevronOffset;
+  }
+
+  &__ghost {
+    background: none;
+    border: 1px solid white;
+    color: white;
+  }
+
+  &__light {
+    color: $color-grey-dark;
+    background: white;
+
+    &:after {
+      filter: brightness(0.5);
+    }
+  }
+
+  &.textonly {
+    background: none;
+    color: $color-black;
+    text-transform: none;
+    font-family: $default-header-style;
+    padding: 1rem 0;
+  }
+}

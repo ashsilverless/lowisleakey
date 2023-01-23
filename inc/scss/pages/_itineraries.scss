@@ -1,0 +1,317 @@
+.single-itineraries {
+  .header .hero {
+    justify-content: end;
+
+    .breadcrumb {
+      
+
+      a {
+        
+      }
+    }
+  }
+  .map-item {
+    .highlight-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      @include respond(phone) {
+        padding-bottom: 2rem;
+      }
+    }
+  }
+}
+.itin-facts {
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+  @include respond(phone) {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+
+  .where,
+  .length,
+  .price {
+    border-left: 1px solid $color-black;
+    padding: 0 1rem;
+    @include respond(phone) {
+      border-left-color: #aaa;
+    }
+  }
+
+  .heading-tertiary {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    padding: 0 0 1rem 1rem;
+    font-weight: 700;
+    border-bottom: 1px solid $color-black;
+    @include respond(phone) {
+      padding: 0 0 1rem 0;
+      border-bottom: none;
+    }
+  }
+
+  .length {
+    padding-right: 1rem;
+  }
+
+  .meta {
+    padding: 1rem;
+    display: flex;
+    align-items: baseline;
+    span {
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding-right: 1rem;
+    }
+    @include respond(phone) {
+      padding: 0;
+    }
+
+    #places {
+      list-style: none;
+
+      li {
+        display: inline;
+
+        &::after {
+          content: ",";
+        }
+
+        &:last-child::after {
+          content: none;
+        }
+      }
+    }
+  }
+
+  .where {
+    .country {
+      font-weight: 700;
+
+      &::after {
+        content: ":";
+      }
+    }
+
+    .country ~ .country {
+      &::before {
+        content: "\a";
+        white-space: pre;
+      }
+    }
+
+    .country ~ .place {
+      &::after {
+        content: ",";
+      }
+    }
+
+    .country ~ .place {
+      &:last-of-type {
+        &::after {
+          content: none;
+        }
+      }
+    }
+  }
+}
+
+.section-itin-camps {
+  .meta {
+    color: $color-primary;
+  }
+
+  .heading-secondary {
+    padding: 1rem 0;
+  }
+
+  p {
+    padding: 1rem 0;
+  }
+
+  .button {
+    i {
+      color: $color-black;
+      justify-self: end;
+      padding-right: 1rem;
+      font-size: 2rem;
+    }
+
+    .icon {
+      i {
+        color: $color-primary;
+      }
+    }
+  }
+}
+
+.itin-button {
+  display: grid;
+  grid-template-columns: 1fr 6fr 1fr;
+  align-items: center;
+  padding: 2rem 1.5rem;
+
+  .text {
+    line-height: 1.2;
+    font-size: 1.4rem;
+
+    .camp-name {
+      display: block;
+      font-weight: 600;
+      font-size: initial;
+    }
+  }
+}
+
+.lodges {
+  .itin-item-text {
+    padding: 2rem 4rem;
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    align-items: center;
+  }
+
+  .destination-meta {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+  }
+}
+
+.itineraries {
+  .itin-item-text {
+    padding: 2rem 4rem;
+    align-items: center;
+
+    .heading-tertiary {
+      line-height: 3rem;
+
+      &--main {
+        // font-weight: 700;
+      }
+    }
+  }
+
+  .destination-meta {
+    padding: 2rem 0;
+
+    #places {
+      list-style: none;
+
+      li {
+        display: inline;
+
+        &::after {
+          content: ",";
+        }
+
+        &:first-child {
+          border-left: none;
+          font-weight: 700;
+
+          &::after {
+            content: none;
+          }
+        }
+
+        &:last-child::after {
+          content: none;
+        }
+      }
+    }
+  }
+}
+.safari-type-select {
+  .controls {
+    @include respond(phone) {
+      display: none;
+    }
+  }
+}
+
+.safaritype-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 4rem;
+  @include respond(tab-port) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.itin-slide-text {
+  .heading-tertiary {
+    line-height: 1.7;
+  }
+
+  .destination-meta {
+    padding: 2rem 0;
+
+    #places {
+      list-style: none;
+
+      li {
+        display: inline;
+
+        &::after {
+          content: ",";
+        }
+
+        &:first-child {
+          border-left: none;
+          font-weight: 700;
+
+          &::after {
+            content: none;
+          }
+        }
+
+        &:last-child::after {
+          content: none;
+        }
+      }
+    }
+  }
+}
+
+.signature-itins {
+  .post-item {
+    
+    display: flex;
+    flex-direction: column;
+
+    .post-image {
+      @include backgroundCover;
+      height: 25rem;
+    }
+
+    .post-text {
+      padding: 1rem 2rem;
+      flex: 1;
+    }
+
+    .post-link {
+      padding: 1rem 2rem 2rem;
+    }
+  }
+}
+.start-end {
+  display: flex;
+
+  border-bottom: 1px solid $color-black;
+  padding-bottom: 0.3rem;
+  .start,
+  .end {
+    flex: 1;
+    .heading-tertiary {
+      display: inline;
+      border-bottom: none;
+      padding-right: 1rem;
+      letter-spacing: 0.15rem;
+    }
+    span {
+      font-family: $alt-font-header;
+      letter-spacing: 0.15rem;
+    }
+  }
+}

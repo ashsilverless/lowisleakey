@@ -1,0 +1,70 @@
+.gallery_with_text {
+    position: relative;
+    min-height: 70vh;
+    margin-bottom: 5rem;
+
+    .row {
+        position: relative;
+    }
+
+    &__header {
+        position: relative;
+        top: 0;
+        left: 10%;
+        width: 40%;
+        padding: 2rem 5rem;
+        z-index: 100;
+        background: rgb(255 255 255 / 75%);
+
+        &.open {
+            svg {
+                transform: rotate(270deg);
+            }
+        }
+
+        .heading {
+            position: relative;
+            cursor: pointer;
+        }
+
+        p {
+            display: none;
+        }
+
+        svg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 2rem;
+            height: 2rem;
+            transform: rotate(90deg);
+            transition: .5s transform ease;
+
+            path {
+                fill: $color-grey-mid;
+            }
+        }
+    }
+
+    .who-slider {
+        position: absolute;
+        top: 0;
+        height: 70vh;
+
+        &__image {
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .owl-stage-outer,
+        .owl-stage,
+        .owl-item {
+            height: 100%;
+        }
+
+        .owl-nav {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,378 @@
+#login-overlay {
+    max-height: 100vh;
+
+    &.fadeOut {
+        overflow: hidden;
+        opacity: 0;
+        max-height: 0;
+        transition: max-height 800ms, opacity 500ms;
+    }
+}
+
+.header-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+    z-index: 500;
+
+    svg {
+        filter: brightness(100);
+    }
+}
+
+.full-page-panel {
+    position: relative;
+    display: flex;
+    height: 100vh;
+    background-size: cover;
+    align-items: center;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50vw;
+        height: 100%;
+        background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+        z-index: 0;
+        opacity: .5;
+        ;
+    }
+
+    >.row {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    .input-wrapper {
+        $overlap: 5rem;
+
+        &:before {
+            content: '';
+            position: absolute;
+            width: $overlap;
+            height: 100%;
+            top: 0;
+            left: -$overlap;
+            background: white;
+        }
+
+        input,
+        button {
+            position: relative;
+            display: block;
+            border: none;
+            font-size: $default-font-size;
+            font-family: $default-font-style;
+            padding: 2rem calc($overlap * 2) 2rem 0;
+            width: 100%;
+            text-transform: uppercase;
+            outline: none;
+            height: 6rem;
+        }
+
+        button {
+            position: relative;
+            background-color: $color-primary;
+            color: white;
+            text-align: left;
+
+            &:before {
+                content: '';
+                position: absolute;
+                width: $overlap;
+                height: 100%;
+                top: 0;
+                left: -$overlap;
+                background: white;
+                background-color: $color-primary;
+            }
+        }
+
+        .proceed-itin {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 5rem;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: $color-primary;
+            opacity: 1;
+            transition: 0.5s 0.5s opacity ease;
+            cursor: pointer;
+
+            &.hide {
+                opacity: 0;
+            }
+
+            svg {
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+    }
+
+
+
+}
+
+.details-entry {
+    position: relative;
+    top: 0;
+    width: 40rem;
+    z-index: 10;
+    transition: .5s top ease;
+
+    .heading {
+        color: $color-primary;
+
+        &__primary {
+            margin-top: 1rem;
+            margin-bottom: 5rem;
+            text-transform: uppercase;
+            color: white;
+        }
+    }
+}
+
+.single-itineraries {
+    header {
+        opacity: 0;
+        z-index: -1;
+
+        &.visible {
+            opacity: 1;
+            z-index: 100;
+        }
+    }
+
+    .input-wrapper.unique-id {
+        pointer-events: none;
+    }
+
+    .icon-animated {
+        display: inline-block;
+    }
+}
+
+
+main.loaded {
+    .input-wrapper.password {
+        top: calc(100% + 7rem);
+        top: 7rem;
+    }
+
+    .input-wrapper.submit-button {
+        top: calc(100% + 16rem);
+        top: 16rem;
+    }
+
+    .details-entry {
+        &.password-error {
+            top: -10rem;
+
+            .submit-button {
+                top: 22rem;
+            }
+
+            .error-message {
+                opacity: 1;
+                transition-delay: 1s;
+            }
+        }
+    }
+}
+
+.inputs {
+    position: relative;
+    width: 100%;
+}
+
+.input-wrapper {
+    position: absolute;
+    top: 0;
+    transition: 0.5s .5s top ease;
+    width: 100%;
+
+    &.unique-id {
+        z-index: 250;
+
+        span {
+            position: absolute;
+            width: 2rem;
+            height: 2rem;
+            top: 2rem;
+            right: 2rem;
+            opacity: .3;
+
+            svg {
+                width: 100%;
+                height: 100%;
+
+            }
+        }
+    }
+
+    &.anchor {
+        position: relative;
+        top: 0;
+        z-index: 50;
+    }
+
+    &.password,
+    &.submit-button {
+        top: 0;
+        z-index: 30;
+    }
+}
+
+.icon-animated {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    left: -9rem;
+    top: -1rem;
+    display: none;
+    vertical-align: middle;
+    text-align: center;
+    transform: scale(0.5);
+}
+
+.icon-animated .tick svg {
+    position: absolute;
+    left: 22px;
+    right: 0;
+    top: 12px;
+    bottom: 0;
+    fill: #fff;
+    width: 25px;
+    height: 52px;
+}
+
+.icon-animated-tick .circle {
+    fill: #97b767;
+    animation-fill-mode: forwards;
+    animation-name: circle-pulse;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+}
+
+.tick-leg1 {
+    fill: #fff;
+    animation-fill-mode: forwards;
+    animation-name: tick-swipe1;
+    animation-duration: .3s;
+    animation-iteration-count: 1;
+    transform: scaleX(0);
+    transform-origin: left bottom;
+    opacity: 0;
+}
+
+.tick-leg2 {
+    fill: #fff;
+    animation-fill-mode: forwards;
+    animation-name: tick-swipe2;
+    animation-duration: .5s;
+    animation-iteration-count: 1;
+    transform: scaleY(0);
+    transform-origin: right bottom;
+    opacity: 0;
+}
+
+
+@keyframes tick-swipe1 {
+    0% {
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.5;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+
+    100% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+@keyframes tick-swipe2 {
+    40% {
+        opacity: 0;
+    }
+
+    47% {
+        transform: scaleY(0.15);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}
+
+@keyframes circle-pulse {
+
+    0%,
+    25%,
+    75%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.tick {
+    width: 100%;
+    height: 100%;
+    transform: rotate(45deg) scale(0.8);
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.tick-holder {
+    transform: scale(0.6);
+}
+
+.error-message {
+    display: none;
+    position: absolute;
+    top: calc(100% + 1rem);
+    color: white;
+
+    p {
+        margin-bottom: 0;
+    }
+
+    &.password {
+        display: block;
+        opacity: 0;
+        transition: .5s opacity ease;
+        transition-delay: 1s;
+    }
+}
+
+.error404 {
+    .error-message {
+        display: block;
+        ;
+    }
+}

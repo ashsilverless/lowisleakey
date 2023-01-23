@@ -1,0 +1,55 @@
+.headline-wrapper {
+    .map {
+        svg {
+            height: auto;
+            width: 100%;
+            position: sticky;
+            top: 5rem;
+        }
+
+        path {
+            &.active {
+                fill: $color-primary;
+            }
+        }
+    }
+}
+
+.headline {
+    margin: 10rem 0 0;
+
+    .heading__primary {
+        line-height: 1.6;
+    }
+
+    &__quote {
+        margin-top: 5rem;
+
+        .heading {
+            color: $color-grey-mid;
+
+            &.quote {
+                position: relative;
+                font-style: italic;
+                color: $color-primary;
+
+                span:first-of-type {
+                    position: absolute;
+                    top: 0;
+                    left: -1rem;
+                    white-space: no-wrap;
+                }
+            }
+        }
+    }
+}
+
+.leopard-device {
+    position: relative;
+
+    svg {
+        width: 250%;
+        height: auto;
+        margin-top: -20vw;
+    }
+}

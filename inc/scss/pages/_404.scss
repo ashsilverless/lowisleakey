@@ -1,0 +1,16 @@
+.error-404 {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+
+  >div {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    height: 100vh;
+  }
+
+  p {
+    color: white;
+  }
+}

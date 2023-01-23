@@ -1,0 +1,43 @@
+.sort-posts {
+    margin: 3rem 0 1rem;
+
+    p {
+        display: inline-block;
+        font-size: $default-font-size * .8;
+        font-weight: 600;
+        color: $color-primary;
+        text-transform: uppercase;
+    }
+}
+
+.select-wrapper {
+    position: relative;
+    display: inline-block;
+    padding-right: 3rem;
+    background-color: $color-grey-light;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: $chevronOffset;
+        transform: rotate(90deg);
+        background: url('inc/img/chevron.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 1rem;
+        height: 100%;
+    }
+}
+
+select {
+    position: relative;
+    display: inline-block;
+    padding: .5rem 2rem;
+    font-size: $default-font-size * .8;
+    color: white;
+    cursor: pointer;
+    font-family: $default-header-style;
+    text-transform: uppercase;
+}
