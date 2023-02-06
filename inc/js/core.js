@@ -16,9 +16,6 @@ jQuery(document).ready(function ($) {
     }
   });
 
-
-
-
   /* TABBED CONTENT */
 
   $(document).ready(function () {
