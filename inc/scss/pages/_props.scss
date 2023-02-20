@@ -1,0 +1,13 @@
+.property-details {
+    margin-left: 10rem;
+    .heading {
+        margin-bottom: 2rem;
+    }
+}
+
+.icon-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 5rem;
+    margin-bottom: 5rem;
+}

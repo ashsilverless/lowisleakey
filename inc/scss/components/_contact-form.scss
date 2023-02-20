@@ -1,0 +1,59 @@
+.fields-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2rem;
+    cursor: pointer;
+    input,
+    textarea {
+        width: 100%;
+        padding: 1rem 2rem;
+        border-radius: 0;
+        border-style: none;
+        border: 1px solid $color-grey-light;
+        font-size: 1.5rem;
+        font-family: $default-font-style;
+        background-color: transparent;
+        cursor: pointer;
+    }
+    span {
+        z-index: 10;
+    }
+    .text-area {
+        grid-column-start: 1;
+        grid-column-end: -1;
+    }
+    .form-field {
+        position: relative;
+        label {
+            position: absolute;
+            left: 1.5rem;
+            top: 1.5rem;
+            z-index: 10;
+            background: #f8f7f5;
+            padding: 0 0.5rem;
+            line-height: 1;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            transition: top 0.3s ease;
+            z-index: 5;
+        }
+        &.active {
+            label {
+                top: -0.5rem;
+                z-index: 20;
+            }
+        }
+    }
+}
+input.wpcf7-submit {
+    margin: 0 auto;
+    display: flex;
+    border: none;
+    padding: 1.5rem 8rem;
+    background: $color-primary;
+    color: white;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-family: $default-font-style;
+    letter-spacing: 1px;
+}
