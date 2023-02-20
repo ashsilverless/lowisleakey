@@ -2,8 +2,8 @@
 add_action('init', 'custom_post_type_properties', 0);
 add_action('init', 'custom_post_type_itineraries', 0);
 add_action('init', 'custom_post_type_safari_gallery', 0);
-add_action('init', 'taxonomy_propertystyle', 0);
-add_action('init', 'taxonomy_safaritype', 0);
+//add_action('init', 'taxonomy_propertystyle', 0);
+//add_action('init', 'taxonomy_safaritype', 0);
 add_action('init', 'taxonomy_destination', 0);
 add_action('init', 'taxonomy_gallery_location', 0);
 add_action('init', 'taxonomy_propertyfacility', 0);

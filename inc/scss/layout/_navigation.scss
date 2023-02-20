@@ -132,7 +132,6 @@
 
   a {
     text-decoration: none;
-
   }
 
   .arrow {
@@ -147,7 +146,6 @@
   }
 
   @keyframes bounce {
-
     0%,
     20%,
     50%,
@@ -182,14 +180,24 @@ menu {
         display: block;
         padding: 1rem 2rem;
         text-transform: uppercase;
-        font-size: $default-font-size * .8;
-        letter-spacing: .05rem;
+        font-size: $default-font-size * 0.8;
+        letter-spacing: 0.05rem;
         color: $color-grey-mid;
         text-decoration: none;
-        transition: .3s all ease;
-
+        transition: 0.3s all ease;
+        &:before {
+          content: "";
+          position: absolute;
+          bottom: -2px;
+          left: calc(50% - 5px);
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background-color: transparent;
+          transition: background-color 0.3s ease;
+        }
         &:after {
-          content: '';
+          content: "";
           position: absolute;
           top: 10px;
           right: 0;
@@ -200,6 +208,9 @@ menu {
 
         &:hover {
           background-color: white;
+          &:before {
+            background-color: $color-primary;
+          }
         }
       }
     }
@@ -211,21 +222,22 @@ menu {
     a {
       padding-right: 4rem;
 
-      &:after {
+      &:after,
+      &:before {
         display: none;
       }
     }
 
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       right: $chevronOffset;
-      background: url('inc/img/chevron.svg');
+      background: url("inc/img/chevron.svg");
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-      width: .75rem;
+      width: 0.75rem;
       height: 100%;
       transform: rotate(90deg);
       filter: brightness(0.5);
@@ -238,15 +250,24 @@ menu {
       left: 0;
       width: 100%;
       padding: 1rem 0 0;
-      transition: .5s all ease;
+      transition: 0.5s all ease;
       transform: scaleY(0);
       transform-origin: top;
       background-color: rgba(255, 255, 255, 0.75);
       //border-right: 1px solid transparent;
-
+      &:hover {
+        background: white;
+      }
       li {
         display: block;
         border: none;
+        a {
+          transition: all 0.3s ease;
+          &:hover {
+            padding-left: 2.5rem;
+            color: $color-primary;
+          }
+        }
       }
     }
 
@@ -257,5 +278,6 @@ menu {
     }
   }
 
-  @include respond(tab-port) {}
+  @include respond(tab-port) {
+  }
 }

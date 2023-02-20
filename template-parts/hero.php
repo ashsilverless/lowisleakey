@@ -9,14 +9,23 @@ if (get_field('hero_background_image')) { ?>
 ?>
 
 <?php
-    if (is_front_page()) {
-        $heroSize = 'full-height';
-    } else {
-        $heroSize = 'standard';
-    } ?>
+if (is_front_page()) {
+    $heroSize = 'full-height';
+} else if ( 'properties' == get_post_type() ){
+    $heroSize = 'jumbo';
+} else {
+    $heroSize = 'standard';
+} ?>
+
+<?php if ( 'itineraries' == get_post_type() ){ ?>
+
+<div class="row static-logo">
+    <?php get_template_part('inc/img/logo'); ?>
+</div>
+
+<?php }?>
 
 <div class="hero <?php echo $heroSize; ?>" style="background-image: url(<?php echo $heroImage['url']; ?>);">
-
     <?php if (is_front_page()) { ?>
     <div class="wrapper-video">
         <video autoplay loop>
@@ -28,29 +37,49 @@ if (get_field('hero_background_image')) { ?>
 
     <div class="row grid-layout2 ">
         <div class="hero__heading">
-            <h2 class="heading heading__sm heading__alt date">
-                <? if (is_single()){
-$post_date = get_the_date( 'd.m.Y' );
-echo $post_date;
-                        } else {
-                            echo 'Lowis & Leakey';
-                        }?>
 
+            <?php 
+            if ( 'itineraries' == get_post_type() ){ 
+            echo '<h3 class="heading heading__xs heading__primary">Where We Go</h3>';  
+            } ?>
+
+            <h2 class="heading heading__sm heading__alt date">
+                <? if (is_singular('post')) {
+                $post_date = get_the_date( 'd.m.Y' );
+                echo $post_date;
+                } else if ( 'itineraries' OR 'properties' == get_post_type() ){ 
+                echo '';
+                } else {
+                    echo 'Lowis & Leakey';
+                }?>
             </h2>
+
+            <?php if ( 'itineraries' == get_post_type() ){ 
+                echo '<h2 class="heading heading__med heading__alt">';
+                the_title();
+                echo '</h2>';
+            }?>
+
             <h1 class="heading heading__xl">
                 <?php if (is_front_page()) {
-        the_field('hero_heading');
-    } else {
-        the_title();
-    } ?>
+                        the_field('hero_heading');
+                    } else if ( 'itineraries' == get_post_type() ){ 
+                        the_field('itinerary_title');
+                    } else if ( 'properties' == get_post_type() ){ 
+                        echo '';
+                    } else {
+                        the_title();
+                    } ?>
             </h1>
         </div>
+
         <?php if (is_front_page()) { ?>
         <div class="fmbottom video">
             <p>Watch our full video</p>
             <?php get_template_part('inc/img/play'); ?>
         </div>
         <?php } ?>
+
     </div>
 
 </div>

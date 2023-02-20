@@ -12,21 +12,25 @@
 
 <?php if (!is_page(array('your-safari'))) { ?>
 
+<?php if (!is_singular(array('properties', 'itineraries'))) { ?>
+
 <footer>
 
-    <?php if (get_field('footer_required') == 'yes') {
-        $footer_background = get_field('footer_background_image'); ?>
+    <?php 
+    $term = get_queried_object();
+    if (get_field('footer_required', $term) == 'yes') {
+        $footer_background = get_field('footer_background_image', $term); ?>
 
     <div class="footer-cta" style="background-image:url(<?php echo $footer_background['url'] ?>);">
         <div class="row">
             <div class="copy">
                 <h3 class="heading heading__sm">
-                    <?php the_field('footer_copy'); ?>
+                    <?php the_field('footer_copy', $term); ?>
                 </h3>
                 <?php ?>
             </div>
-            <a href="<?php the_field('footer_button_target'); ?>" class="button button__ghost button__inline">
-                <?php the_field('footer_button_text'); ?>
+            <a href="<?php the_field('footer_button_target', $term); ?>" class="button button__ghost button__inline">
+                <?php the_field('footer_button_text', $term); ?>
             </a>
         </div>
     </div>
@@ -69,10 +73,15 @@
 
             <div class="meta">
                 <p>
-                    <?php the_field('email_address', 'options'); ?>
+                    <a href="mailto: <?php the_field('email_address', 'options'); ?>">
+                        <?php the_field('email_address', 'options'); ?>
+                    </a>
                 </p>
                 <p>
-                    <?php the_field('telephone_number', 'options'); ?>
+                    <a href="tel:<?php the_field('telephone_number', 'options'); ?>">
+                        <?php the_field('telephone_number', 'options'); ?>
+                    </a>
+
                 </p>
             </div>
 
@@ -87,7 +96,9 @@
                     the_row();
                     $footerlink = get_sub_field('text'); ?>
                 <p class="menu-item">
-                    <?php echo $footerlink; ?>
+                    <a href="<?php the_sub_field('target'); ?>">
+                        <?php echo $footerlink; ?>
+                    </a>
                 </p>
 
                 <?php endwhile; endif; ?>
@@ -104,9 +115,10 @@
                     the_row();
                     $footerlink = get_sub_field('text'); ?>
                 <p class="menu-item">
-                    <?php echo $footerlink; ?>
+                    <a href="<?php the_sub_field('target'); ?>">
+                        <?php echo $footerlink; ?>
+                    </a>
                 </p>
-
                 <?php endwhile; endif; ?>
             </div>
             <?php endwhile; endif; ?>
@@ -126,7 +138,11 @@
         <div class="row grid-layout-footer">
             <div></div>
             <div class="left">
-                <p>Terms & Conditions</p>
+                <p>
+                    <a href="/terms-and-conditions">
+                        Terms & Conditions
+                    </a>
+                </p>
             </div>
             <div class="right">
                 <p>&copy; Lowis & Leakey</p>
@@ -139,6 +155,43 @@
 
 <?php } ?>
 <?php } ?>
+<?php } ?>
+
+<?php if (is_singular(array('properties', 'itineraries'))) { ?>
+
+<div class="personal-footer">
+    <?php get_template_part('inc/img/logo'); ?>
+    <p class="heading heading__sm" id="familyname"></p>
+    <p><?php the_field('footer_text_prop', 'options');?><span id="authname"></span> here:</p>
+    <div class="contacts">
+        <p id="telnode"></p>
+        <p id="emailnode"></p>
+    </div>
+
+</div>
+
+<script>
+jQuery(document).ready(function($) {
+    var famname = window.localStorage.getItem('family_group');
+    var authname = window.localStorage.getItem('authname');
+    var telnumber = window.localStorage.getItem('authtel');
+    var authemail = window.localStorage.getItem('authmail');
+    $('#familyname').html(famname);
+    $('#authname').html(authname);
+    $('#telnode').html('<a href="tel:' + telnumber + '">' + telnumber + '</a>');
+    $('#emailnode').html('<a href="mailto:' + authemail + '">' + authemail + '</a>')
+
+});
+</script>
+
+<div class="personal-socket">
+    <p>Terms & Conditions</p>
+    <p>&copy; Lowis & Leakey <?php echo date("Y");?></p>
+</div>
+
+<?php }?>
+
+
 </body>
 
 </html>

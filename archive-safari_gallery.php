@@ -19,4 +19,5 @@ get_header(); ?>
     paginate_posts();
     ?>
 </div>
+
 <?php get_footer(); ?>

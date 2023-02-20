@@ -661,6 +661,36 @@ jQuery(document).ready(function ($) {
     $(this).removeClass('active');
   });
 
+  $(".form-field input").focusin(function() {
+    $(this)
+      .closest(".form-field")
+      .addClass("active");
+  });
+
+  $(".form-field input").blur(function() {
+    if (!$(this).val().length > 0) {
+      $(this)
+        .closest(".form-field")
+        .removeClass("active");
+    }
+  });
+
+  $(".form-field textarea").focusin(function() {
+    $(this)
+      .closest(".form-field")
+      .addClass("active");
+  });
+
+  $(".form-field textarea").blur(function() {
+    if (!$(this).val().length > 0) {
+      $(this)
+        .closest(".form-field")
+        .removeClass("active");
+    }
+  });
+
+ 
+
 }); //Don't remove ---- end of jQuery wrapper
 
 var coll = document.getElementsByClassName("collapsible");

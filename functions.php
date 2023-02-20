@@ -485,3 +485,12 @@ function acf_title($value, $post_id, $field)
 add_filter('acf/update_value', 'acf_title', 10, 3);
 
 remove_all_filters('posts_orderby');
+
+function hide_description_row() {
+  echo "<style> .term-description-wrap { display:none; } </style>";
+}
+
+add_action( "facility_edit_form", 'hide_description_row');
+add_action( "facility_add_form", 'hide_description_row');
+add_action( "activity_edit_form", 'hide_description_row');
+add_action( "activity_add_form", 'hide_description_row');

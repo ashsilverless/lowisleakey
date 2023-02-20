@@ -1,8 +1,9 @@
+<?php $term = get_queried_object();?>
 <?php get_template_part('inc/img/format-select__highlight'); ?>
 <div class="highlights owl-carousel owl-theme">
     <?php
-    if (have_rows('highlights')):
-        while (have_rows('highlights')):
+    if (have_rows('highlights', $term)):
+        while (have_rows('highlights', $term)):
             the_row();
     ?>
     <div>
@@ -29,8 +30,8 @@
 <div class="row">
     <div id="highlightGrid" class="highlight-grid">
         <?php
-        if (have_rows('highlights')):
-            while (have_rows('highlights')):
+        if (have_rows('highlights', $term)):
+            while (have_rows('highlights', $term)):
                 the_row();
         ?>
         <div class="highlight-grid__item">
@@ -47,19 +48,12 @@
                 <h2 class='heading heading__lg'>
                     <?php the_sub_field('large_text'); ?>
                 </h2>
-        </div>
-
-
-        ">
+        </div>">
                 <img src="<?php echo esc_url($image['sizes']['large']); ?>"
                     alt="<?php echo esc_attr($image['alt']); ?>" />
             </a>
-
-
-
             <?php } ?>
         </div>
-
 
         <?php endwhile;
         endif; ?>
@@ -67,6 +61,6 @@
 </div>
 
 <script>
-    document.getElementById('highlightGrid').style.display = 'none';
-    document.getElementById('wide-format').classList.add('highlight');
+document.getElementById('highlightGrid').style.display = 'none';
+document.getElementById('wide-format').classList.add('highlight');
 </script>

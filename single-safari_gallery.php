@@ -51,4 +51,42 @@ get_header(); ?>
     </div>
 </div>
 
+<div class="vertical-spacing"></div>
+
+<div class="gallery-feed">
+    <div class="row">
+
+        <div class="head-section">
+            <h4 class="heading heading__xs heading__primary">Archive</h4>
+            <h3 class="heading heading__med">More Safari Diaries</h3>
+        </div>
+
+        <?php $loop = new WP_Query(
+        array(
+            'post_type' => 'safari_gallery',
+            'posts_per_page' => 5,
+            'post__not_in' => array( get_the_ID() ),
+            'orderby' => 'date',
+            'order' => 'DESC'
+        )
+    ); ?>
+        <?php while ($loop->have_posts()):
+        $loop->the_post(); 
+        $id = get_the_ID();
+        $image = get_field('hero_background_image', $id);
+        
+        
+        ?>
+        <?php get_template_part('template-parts/safari-gallery-card'); ?>
+
+        <?php
+    endwhile;
+    wp_reset_postdata();
+    paginate_posts();
+    ?>
+    </div>
+</div>
+
+<div class="vertical-spacing"></div>
+
 <?php get_footer(); ?>

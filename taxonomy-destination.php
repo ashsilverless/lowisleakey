@@ -1,14 +1,13 @@
 <?php
-
 /**
- * The template for displaying all single posts
+ * The template for displaying destinations
  *
  * @package lowisleakey
  */
 get_header(); ?>
 <?php $term = get_queried_object();
 $termlower = strtolower($term->name); ?>
-<?php $pageImage = get_field('hero_image'); ?>
+<?php $pageImage = get_field('hero_image', $term); ?>
 <div class="hero hero__destination" style="background-image: url(<?php echo $pageImage['url']; ?>);">
     <div class="row">
         <a href="/where-we-go">
